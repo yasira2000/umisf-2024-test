@@ -20,39 +20,52 @@
     <section class="hero is-primary is-bold">
       <div class="hero-body">
         <div class="container">
-          <h1 style="text-align: center;" class="title">Registration Form</h1>
+          <h1 style="text-align: center;" class="title">Age Group Registration Form</h1>
         </div>
       </div>
     </section>
     <form id="form" class="container m-4 pl-4" method="POST">
       <div class="field">
-        <label class="label">First Name</label>
+        <label class="label">Name of Applicant</label>
         <div class="control">
           <input
             class="input"
             type="text"
-            placeholder="Your First Name"
-            name="First Name"
+            placeholder="Your Name"
+            name="Name"
             required
           />
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Last Name</label>
+        <label class="label">School of Applicant</label>
         <div class="control">
           <input
             class="input"
             type="text"
-            placeholder="Your Last Name"
-            name="Last Name"
+            placeholder="Your School"
+            name="School"
             required
           />
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Contact Number</label>
+        <label class="label">Date of Birth</label>
+        <div class="control">
+          <input
+            class="input"
+            type="date"
+            placeholder="Date of Birth"
+            name="DOB"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Contact Number(Whatsapp Number)</label>
         <div class="control">
           <input
             class="input"
@@ -61,25 +74,6 @@
             name="Contact Number"
             required
           />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Age Category</label>
-        <div class="control">
-          <select class="input"
-          type="text"
-          placeholder="Your Age Category"
-          name="Age Category">
-            <option value="U9-Boys">U9-Boys</option>
-            <option value="U9-Girls">U9-Girls</option>
-            <option value="U11-Boys">U11-Boys</option>
-            <option value="U11-Girls">U11-Girls</option>
-            <option value="U13-Boys">U13-Boys</option>
-            <option value="U13-Girls">U13-Girls</option>
-            <option value="U15-Boys">U15-Boys</option>
-            <option value="U15-Girls">U15-Girls</option>
-          </select>
         </div>
       </div>
 
@@ -95,22 +89,100 @@
           />
         </div>
       </div>
+
+      <div class="field">
+        <label class="label">Participating Event</label>
+        <div class="control">
+          <select class="input"
+          type="text"
+          placeholder="Participating Event"
+          name="Participating Event">
+            <option value="Single">Single</option>
+            <option value="Double">Double</option>
+            <option value="Single & Double">Single & Double</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Age Category</label>
+        <div class="control">
+          <select class="input"
+          type="text"
+          placeholder="Age Category"
+          name="Age Category">
+            <option value="U9-Boys">U9-Boys</option>
+            <option value="U9-Girls">U9-Girls</option>
+            <option value="U11-Boys">U11-Boys</option>
+            <option value="U11-Girls">U11-Girls</option>
+            <option value="U13-Boys">U13-Boys</option>
+            <option value="U13-Girls">U13-Girls</option>
+            <option value="U15-Boys">U15-Boys</option>
+            <option value="U15-Girls">U15-Girls</option>
+          </select>
+        </div>
+      </div>
+
+      <h2>This Section is only for double players</h2>
       
       <div class="field">
-        <label class="label">Date of Birth</label>
+        <label class="label">Double Partners Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder="Your Double Partners Name"
+            name="Double Partner"
+            value="None"
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Past Performance</label>
+        <p>Please indicate your past year’s best performances and if participated, performance in our past
+          tournaments, (UMiSF)
+          If past performances are not indicated the committee is not responsible for any issues regarding the
+          draws.</p>
+        <div class="control">
+          <textarea
+            class="textarea"
+            placeholder="Past Performance"
+            name="Past Performance"
+          ></textarea>
+        </div>
+      </div>
+      
+      <h2>Payment Details</h2>
+
+      <div class="field">
+        <label class="label">Payement Date</label>
         <div class="control">
           <input
             class="input"
             type="date"
-            placeholder="Your Date of Birth"
-            name="DOB"
+            placeholder="Payment Date"
+            name="Payment Date"
             required
           />
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Profile Image</label>
+        <label class="label">Paid Amount in LKR</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder="Your Double Partners Name"
+            name="Paid Amount"
+            required           
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Payment Slip</label>
         <div class="control">
           <input class="input" type="file" name="Payment Slip" accept="image/*" required/>
         </div>
