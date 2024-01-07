@@ -312,10 +312,16 @@
           })
           .catch(function (error) {
             // Handle errors, you can display an error message here
-            console.error(error);
-            document.getElementById("message").textContent =
-              "An error occurred while submitting the form.";
-            document.getElementById("message").style.display = "block";
+            if (error.message.includes("CORS")) {
+              console.error("CORS error:", error);
+              // Handle CORS error specifically, e.g., display a user-friendly message
+            } else {
+              // Handle other errors
+              console.error(error);
+              document.getElementById("message").textContent =
+                "An error occurred while submitting the form.";
+              document.getElementById("message").style.display = "block";
+            }
           });
       });
     </script>
