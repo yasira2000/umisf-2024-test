@@ -281,16 +281,16 @@
           {
             redirect: "follow",
             method: "POST",
-            body: formData,
-            // headers: {
-            //   "Content-Type": "text/plain;charset=utf-8",
-            // },
+            body: formDataString,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
           }
         )
           .then(function (response) {
             // Check if the request was successful
             if (response) {
-              return response.json(); // Assuming your script returns JSON response
+              return response; // Assuming your script returns JSON response
             } else {
               throw new Error("Failed to submit the form.");
             }
@@ -312,16 +312,10 @@
           })
           .catch(function (error) {
             // Handle errors, you can display an error message here
-            if (error.message.includes("CORS")) {
-              console.error("CORS error:", error);
-              // Handle CORS error specifically, e.g., display a user-friendly message
-            } else {
-              // Handle other errors
-              console.error(error);
-              document.getElementById("message").textContent =
-                "An error occurred while submitting the form.";
-              document.getElementById("message").style.display = "block";
-            }
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
           });
       });
     </script>
