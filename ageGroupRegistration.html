@@ -290,7 +290,7 @@
           .then(function (response) {
             // Check if the request was successful
             if (response) {
-              return response; // Assuming your script returns JSON response
+              return response.json(); // Assuming your script returns JSON response
             } else {
               throw new Error("Failed to submit the form.");
             }
