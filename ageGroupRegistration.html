@@ -281,11 +281,10 @@
           {
             redirect: "follow",
             method: "POST",
-            body: JSON.stringify(Object.fromEntries(formData)),
-            headers: {
-              "Content-Type": "application/json",
-            },
-            mode: "cors", // Ensure you are not using 'no-cors'
+            body: formData,
+            // headers: {
+            //   "Content-Type": "text/plain;charset=utf-8",
+            // },
           }
         )
           .then(function (response) {
@@ -316,13 +315,13 @@
             if (error.message.includes("CORS")) {
               console.error("CORS error:", error);
               // Handle CORS error specifically, e.g., display a user-friendly message
-            }
+            } else {
               // Handle other errors
               console.error(error);
               document.getElementById("message").textContent =
                 "An error occurred while submitting the form.";
               document.getElementById("message").style.display = "block";
-            
+            }
           });
       });
     </script>
