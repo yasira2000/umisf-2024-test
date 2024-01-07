@@ -281,10 +281,11 @@
           {
             redirect: "follow",
             method: "POST",
-            body: formData,
+            body: JSON.stringify(Object.fromEntries(formData)),
             headers: {
-              "Content-Type": "text/plain;charset=utf-8",
+              "Content-Type": "application/json",
             },
+            mode: "cors", // Ensure you are not using 'no-cors'
           }
         )
           .then(function (response) {
