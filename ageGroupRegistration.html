@@ -184,9 +184,11 @@
       <div class="field">
         <label class="label">Payment Slip</label>
         <div class="control">
-          <input class="input" type="file" name="image" accept="image/*" required/>
+          <input class="input" type="file" name="file" id="files" accept="image/*" required/>
+          <input type='button' value='Upload' onclick='getFiles()'>
         </div>
       </div>
+      
 
       <!-- <div class="field">
         <label class="label">Password</label>
@@ -260,6 +262,20 @@
     ></div>
 
     <script>
+      function getFiles() {
+        const f = document.getElementById('files');
+          const fr = new FileReader();
+          fr.onload = (e) => {
+            const data = e.target.result.split(",");
+            const obj = {fileName: f.files[i].name, mimeType: data[0].match(/:(\w.+);/)[1], data: data[1]};
+            google.script.run.withSuccessHandler((id) => {
+              console.log(id);
+            }).saveFile(obj);
+          }
+          fr.readAsDataURL(file);
+      }
+
+
       document.getElementById("form").addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent the default form submission
         document.getElementById("message").textContent = "Submitting..";
