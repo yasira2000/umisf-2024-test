@@ -184,7 +184,7 @@
       <div class="field">
         <label class="label">Payment Slip</label>
         <div class="control">
-          <input class="input" type="file" name="file" id="files" accept="image/*" required/>
+          <input class="input" type="file" name="file" id="files" accept="image/*" required multiple/>
           <input type='button' value='Upload' onclick='getFiles()'>
         </div>
       </div>
@@ -262,18 +262,18 @@
     ></div>
 
     <script>
-      function getFiles() {
-        const f = document.getElementById('files');
-          const fr = new FileReader();
-          fr.onload = (e) => {
-            const data = e.target.result.split(",");
-            const obj = {fileName: f.files[i].name, mimeType: data[0].match(/:(\w.+);/)[1], data: data[1]};
-            google.script.run.withSuccessHandler((id) => {
-              console.log(id);
-            }).saveFile(obj);
-          }
-          fr.readAsDataURL(file);
-      }
+      [...f.files].forEach((file, i) => {
+        const fr = new FileReader();
+        fr.onload = (e) => {
+          const data = e.target.result.split(",");
+          const obj = {fileName: f.files[i].name, mimeType: data[0].match(/:(\w.+);/)[1], data: data[1]};
+          google.script.run.withSuccessHandler((id) => {
+            console.log(id);
+          }).saveFile(obj);
+        }
+        let url = fr.readAsDataURL(file);
+        console.log(url);
+      });
 
 
       document.getElementById("form").addEventListener("submit", function (e) {
