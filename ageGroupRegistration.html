@@ -184,8 +184,11 @@
       <div class="field">
         <label class="label">Payment Slip</label>
         <div class="control">
-          <input class="input" type="file" name="file" id="files" accept="image/*" required multiple/>
-          <input type='button' value='Upload' onclick='getFiles()'>
+          <input class="input" type="file" name="file" id="files" accept="image/*" required/>
+          <input type="hidden" id="fileData" name="fileData" />
+          <input type="hidden" id="mimeType" name="mimeType" />
+          <input type="hidden" id="fileName" name="fileName" /></td>
+          <input type='button' value='Upload' onclick='LoadFile(event)'>
         </div>
       </div>
       
@@ -247,6 +250,7 @@
         </div>
       </div>
     </form>
+    
     <div
       id="message"
       style="
@@ -262,20 +266,39 @@
     ></div>
 
     <script>
-      function getFiles() {
-        const f = document.getElementById('files');
-        [...f.files].forEach((file, i) => {
-          const fr = new FileReader();
-          fr.onload = (e) => {
-            const data = e.target.result.split(",");
-            const obj = {fileName: f.files[i].name, mimeType: data[0].match(/:(\w.+);/)[1], data: data[1]};
-            google.script.run.withSuccessHandler((id) => {
-              console.log(id);
-            }).saveFile(obj);
-          }
-          fr.readAsDataURL(file);
-        });
-      }
+
+      // function getFiles() {
+      //   const f = document.getElementById('files');
+      //   [...f.files].forEach((file, i) => {
+      //     const fr = new FileReader();
+      //     fr.onload = (e) => {
+      //       const data = e.target.result.split(",");
+      //       const obj = {fileName: f.files[i].name, mimeType: data[0].match(/:(\w.+);/)[1], data: data[1]};
+      //       google.script.run.withSuccessHandler((id) => {
+      //         console.log(id);
+      //       }).saveFile(obj);
+      //     }
+      //     fr.readAsDataURL(file);
+      //   });
+      // }
+
+      function LoadFile(event)
+        {
+          var file = event.target.files[0];
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            console.log(e.target.result);
+            var fileData = e.target.result.substr(e.target.result.indexOf(",")+1);
+            var mimeTypeStart = e.target.result.indexOf("data:") + 5;
+            var mimeTypeEnd = e.target.result.indexOf(";");
+            var mimeType = e.target.result.substr(mimeTypeStart, mimeTypeEnd - mimeTypeStart);
+            var fileName = file.name;
+            document.getElementById("fileData").value = fileData;
+            document.getElementById("mimeType").value = mimeType;
+            document.getElementById("fileName").value = fileName;
+          };    
+          reader.readAsDataURL(file);
+        }
 
 
       document.getElementById("form").addEventListener("submit", function (e) {
