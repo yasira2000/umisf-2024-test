@@ -16,14 +16,16 @@
         }
       </style>
   </head>
-  <body>
-    <section class="hero is-primary is-bold">
+  <body style="display: flex; justify-content: center; padding: 5%; background-color:aliceblue;">
+    <div style="max-width: 1000px; background-color:rgb(244, 255, 255); border-top-right-radius: 20px; border-top-left-radius: 20px;">
+    <section class="hero is-primary is-bold" style="border-top-right-radius: 20px; border-top-left-radius: 20px;">
       <div class="hero-body">
         <div class="container">
           <h1 style="text-align: center;" class="title">Age Group Registration Form</h1>
         </div>
       </div>
     </section>
+    <div style="align-items: center; justify-content: center; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
     <form id="form" class="container m-4 pl-4" method="POST" action="https://script.google.com/macros/s/AKfycbxgq44qk4XMmH-6m9SUDspmXMcv_31OQtdL-euvpOmJeTnmiXVHA_NuhQJInn5pTqKC/exec">
       <div class="field">
         <label class="label">Name of Applicant</label>
@@ -191,53 +193,6 @@
           
         </div>
       </div>
-      
-
-      <!-- <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
-          <input
-            class="input"
-            type="password"
-            placeholder="Your Password"
-            name="Password"
-          />
-        </div>
-      </div> -->
-
-
-      <!-- <div class="field">
-        <label class="label">Gender</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="Gender" value="male" /> Male
-          </label>
-          <label class="radio">
-            <input type="radio" name="Gender" value="female" /> Female
-          </label>
-        </div>
-      </div> -->
-
-      <!-- <div class="field">
-        <label class="label">Agree to Terms</label>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" name="Agree To Terms" value="yes" /> I agree
-            to the terms and conditions
-          </label>
-        </div>
-      </div> -->
-
-      <!-- <div class="field">
-        <label class="label">Additional Information</label>
-        <div class="control">
-          <textarea
-            class="textarea"
-            placeholder="Any additional information"
-            name="Notes"
-          ></textarea>
-        </div>
-      </div> -->
 
       <div class="field is-grouped">
         <div class="control">
@@ -250,6 +205,7 @@
         </div>
       </div>
     </form>
+  </div>
 
     <div
       id="message"
@@ -264,24 +220,9 @@
         border-color: aquamarine;
       "
     ></div>
+</div>
 
     <script>
-
-      // function getFiles() {
-      //   const f = document.getElementById('files');
-      //   [...f.files].forEach((file, i) => {
-      //     const fr = new FileReader();
-      //     fr.onload = (e) => {
-      //       const data = e.target.result.split(",");
-      //       const obj = {fileName: f.files[i].name, mimeType: data[0].match(/:(\w.+);/)[1], data: data[1]};
-      //       google.script.run.withSuccessHandler((id) => {
-      //         console.log(id);
-      //       }).saveFile(obj);
-      //     }
-      //     fr.readAsDataURL(file);
-      //   });
-      // }
-
       function LoadFile(event)
         {
           var file = event.target.files[0];
