@@ -184,7 +184,6 @@
       <div class="field">
         <label class="label">Payment Slip</label>
         <div class="control">
-          
           <input class="input" type="file" name="file" id="files" accept="image/*" onchange="LoadFile(event)" required/>
           <input type="hidden" id="fileData" name="fileData" />
           <input type="hidden" id="mimeType" name="mimeType" />
@@ -285,6 +284,8 @@
 
       function LoadFile(event)
         {
+          console.log('inside the LoadFile');
+
           var file = event.target.files[0];
           var reader = new FileReader();
           reader.onload = function(e) {
@@ -297,7 +298,11 @@
             document.getElementById("fileData").value = fileData;
             document.getElementById("mimeType").value = mimeType;
             document.getElementById("fileName").value = fileName;
+
+            console.log('inside onload');
           };    
+
+          console.log('outside onload');
           reader.readAsDataURL(file);
         }
 
@@ -366,6 +371,6 @@
 </html>
 
 
-link to website
+<!-- link to website
 
-https://tanaikech.github.io/2018/12/22/uploading-multiple-files-from-local-to-google-drive-using-google-apps-script/
+https://tanaikech.github.io/2018/12/22/uploading-multiple-files-from-local-to-google-drive-using-google-apps-script/ -->
