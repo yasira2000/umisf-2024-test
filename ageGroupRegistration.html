@@ -184,11 +184,12 @@
       <div class="field">
         <label class="label">Payment Slip</label>
         <div class="control">
-          <input class="input" type="file" name="file" id="files" accept="image/*" required/>
+          
+          <input class="input" type="file" name="file" id="files" accept="image/*" onchange="LoadFile(event)" required/>
           <input type="hidden" id="fileData" name="fileData" />
           <input type="hidden" id="mimeType" name="mimeType" />
           <input type="hidden" id="fileName" name="fileName" /></td>
-          <input type='button' value='Upload' onclick='LoadFile(event)'>
+          
         </div>
       </div>
       
@@ -359,7 +360,7 @@
       //       document.getElementById("message").style.display = "block";
       //     });
       // });
-      
+
     </script>
   </body>
 </html>
