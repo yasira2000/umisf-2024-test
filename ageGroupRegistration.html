@@ -196,7 +196,7 @@
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-primary" type="submit" id="submit-button">
+          <button class="button is-primary" type="submit" id="submit-button" onclick="OnSubmit()">
             Submit
           </button>
         </div>
@@ -240,6 +240,12 @@
           };
           reader.readAsDataURL(file);
         }
+
+      function OnSubmit(){
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("submit-button").disabled = true;
+      }
 
 
       // document.getElementById("form").addEventListener("submit", function (e) {
